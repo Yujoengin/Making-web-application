@@ -1,3 +1,8 @@
+<?php
+	$conn = mysqli_connect('localhost','root','yujoengin');
+	mysqli_select_db($conn, 'opentutorials');
+	$result = mysqli_query($conn,'SELECT * FROM topic');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +18,9 @@
 	<nav> <!-- It doesn't affect to this document. Only means nav part -->
 		<ol>
 			<?php
-			 echo file_get_contents("list.txt")
+				while ($row = mysqli_fetch_assoc($result)) {
+				 	echo '<li><a href="http://localhost/page/index.php?id='.$row['id'].'">'.$row['id']." ".$row['title'].'</a></li>'."\n";
+		 		}
 			?>
 		</ol>
 	</nav>
