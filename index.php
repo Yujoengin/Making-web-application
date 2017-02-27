@@ -19,7 +19,7 @@
 		<ol>
 			<?php
 				while ($row = mysqli_fetch_assoc($result)) {
-				 	echo '<li><a href="http://localhost/page/index.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";
+				 	echo '<li><a href="http://localhost/page/index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).'</a></li>'."\n";
 		 		}
 			?>
 		</ol>
@@ -30,9 +30,9 @@
 			$sql = 'SELECT * FROM  topic WHERE id ='.$_GET['id'];
 			$result = mysqli_query($conn, $sql);
 			$row = mysqli_fetch_assoc($result);
-			echo '<h2>'.$row['title'].'</h2>';
-			echo $row['description'].'<br />';
-			echo $row['author'];
+			echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
+			echo htmlspecialchars($row['description']).'<br />';
+			echo strip_tags($row['author'], '<a><h1><h2><h3><h4><h5><li><ul><ol>');
 		}
 
 		// if(empty($_GET['id'])===false){
