@@ -23,18 +23,19 @@ header img{
 
 nav {
   border-right: 1px solid gray;
-  width: 200px;
   height: 600px;
+  width: 150px;
   float: left;
 }
 
 nav ol{
   list-style: none;
+  padding: 0;
 }
 
 article {
   float: left;
-  width: 600px;
+  width: 450px;
   padding: 10px;
 }
 

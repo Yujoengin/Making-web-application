@@ -25,20 +25,12 @@
 		</ol>
 	</nav>
 	<article>
-		<?php
-		if(empty($_GET['id']) === false) {
-			$sql = 'SELECT * FROM  topic WHERE id ='.$_GET['id'];
-			$result = mysqli_query($conn, $sql);
-			$row = mysqli_fetch_assoc($result);
-			echo '<h2>'.$row['title'].'</h2>';
-			echo $row['description'].'<br />';
-			echo $row['author'];
-		}
-
-		// if(empty($_GET['id'])===false){
-		// 	echo file_get_contents($_GET['id'].".txt");
-		// }
-		?>
+		<form class="" action="deleteprocess.php" method="post">
+			<p>
+				지우고자 하는 제목 : <input type="text" name="title">
+			</p>
+			<input type="submit" name="name" value="제출">
+		</form>
 	</article>
 	<div id="control">
 		<input type="button" name="" value="white" id="white_btn" />
