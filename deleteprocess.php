@@ -1,6 +1,7 @@
 <?php
-  $conn = mysqli_connect("localhost", "root", "yujoengin");
-  mysqli_select_db($conn, "opentutorials");
+  require("../config/config.php");
+  require("../lib/db.php");
+  $conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
   $origin = 'SELECT * FROM  topic';
   $result = mysqli_query($conn, $origin);
   while ($row = mysqli_fetch_assoc($result)) {

@@ -1,6 +1,7 @@
 <?php
-	$conn = mysqli_connect('localhost','root','yujoengin');
-	mysqli_select_db($conn, 'opentutorials');
+	require("../config/config.php");
+	require("../lib/db.php");
+	$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
 	$result = mysqli_query($conn,'SELECT * FROM topic');
 ?>
 <!DOCTYPE html>
@@ -8,7 +9,8 @@
 <head>
 	<title>Test</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.cs
+	s">
 </head>
 <body>
 	<header> <!-- It doesn't affect to this document. Only means header part -->
@@ -33,7 +35,7 @@
 				작성자 : <input type="text" name="author">
 			</p>
 			<p>
-				본문 : <textarea name="description"></textarea>
+				본문 : <textarea name="description" class="textarea"></textarea>
 			</p>
 			<input type="submit" name="name" value="제출">
 		</form>
@@ -43,6 +45,7 @@
 		<input type="button" name="" value="black" id="black_btn" />
 		<a href="http://localhost/page/write.php">쓰기</a>
 		<a href="http://localhost/page/delete.php">지우기</a>
+		<a href="http://localhost/page/edit.php">수정</a>
 	</div>
 	<script src="http://localhost/page/script.js"></script>
 </body>

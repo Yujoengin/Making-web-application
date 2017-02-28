@@ -1,6 +1,7 @@
 <?php
-	$conn = mysqli_connect('localhost','root','yujoengin');
-	mysqli_select_db($conn, 'opentutorials');
+	require("../config/config.php");
+	require("../lib/db.php");
+	$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
 	$result = mysqli_query($conn,'SELECT * FROM topic');
 ?>
 <!DOCTYPE html>
@@ -37,6 +38,7 @@
 		<input type="button" name="" value="black" id="black_btn" />
 		<a href="http://localhost/page/write.php">쓰기</a>
 		<a href="http://localhost/page/delete.php">지우기</a>
+		<a href="http://localhost/page/edit.php">수정</a>
 	</div>
 	<script src="http://localhost/page/script.js"></script>
 </body>

@@ -1,7 +1,8 @@
 <?php
-	$conn = mysqli_connect('localhost','root','yujoengin');
-	mysqli_select_db($conn, 'opentutorials');
-	$result = mysqli_query($conn,'SELECT * FROM topic');
+require("../config/config.php");
+require("../lib/db.php");
+$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
+$result = mysqli_query($conn,'SELECT * FROM topic');
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +33,7 @@
 			$row = mysqli_fetch_assoc($result);
 			echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
 			echo htmlspecialchars($row['description']).'<br />';
-			echo strip_tags($row['author'], '<a><h1><h2><h3><h4><h5><li><ul><ol>');
+			echo strip_tags($row['author'], '<a><h1><h2><h3><h4><h5><li><ul><ol><b>');
 		}
 
 		// if(empty($_GET['id'])===false){
@@ -45,6 +46,7 @@
 		<input type="button" name="" value="black" id="black_btn" />
 		<a href="http://localhost/page/write.php">쓰기</a>
 		<a href="http://localhost/page/delete.php">지우기</a>
+		<a href="http://localhost/page/edit.php">수정</a>
 	</div>
 	<script src="http://localhost/page/script.js"></script>
 </body>
