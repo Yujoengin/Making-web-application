@@ -1,15 +1,16 @@
 <?php
-require("../config/config.php");
-require("../lib/db.php");
-$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
-$result = mysqli_query($conn,'SELECT * FROM topic');
+	require("../config/config.php");
+	require("../lib/db.php");
+	$conn = db_init($config["host"], $config["duser"], $config["dpw"], $config["dname"]);
+	$result = mysqli_query($conn,'SELECT * FROM topic');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Test</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.cs
+	s">
 </head>
 <body>
 	<header> <!-- It doesn't affect to this document. Only means header part -->
@@ -20,27 +21,27 @@ $result = mysqli_query($conn,'SELECT * FROM topic');
 		<ol>
 			<?php
 				while ($row = mysqli_fetch_assoc($result)) {
-				 	echo '<li><a href="http://localhost/page/index.php?id='.$row['id'].'">'.htmlspecialchars($row['title']).'</a></li>'."\n";
+				 	echo '<li><a href="http://localhost/page/index.php?id='.$row['id'].'">'.$row['title'].'</a></li>'."\n";
 		 		}
 			?>
 		</ol>
 	</nav>
 	<article>
-		<?php
-		if(empty($_GET['id']) === false) {
-			$sql = 'SELECT * FROM  topic WHERE id ='.$_GET['id'];
-			$result = mysqli_query($conn, $sql);
-			$row = mysqli_fetch_assoc($result);
-			echo '<h2>'.htmlspecialchars($row['title']).'</h2>';
-			echo htmlspecialchars($row['description']).'<br />';
-			echo strip_tags($row['author'], '<a><h1><h2><h3><h4><h5><li><ul><ol><b>').'<br />';
-			echo htmlspecialchars($row['create']);
-		}
-
-		// if(empty($_GET['id'])===false){
-		// 	echo file_get_contents($_GET['id'].".txt");
-		// }
-		?>
+		<form class="" action="editprocess.php" method="post">
+			<p>
+				수정할 제목 : <input type="text" name="old_title" value="">
+			</p>
+      <p>
+				새로운 제목 : <input type="text" name="new_title" value="">
+			</p>
+			<p>
+				새로운 작성자 : <input type="text" name="author">
+			</p>
+			<p>
+				새로운 본문 : <textarea name="description" class="textarea"></textarea>
+			</p>
+			<input type="submit" name="name" value="제출">
+		</form>
 	</article>
 	<div id="control">
 		<input type="button" name="" value="white" id="white_btn" />
