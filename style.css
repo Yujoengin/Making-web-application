@@ -9,36 +9,3 @@ body.black {
   background-color: black;
   color: white;
 }
-
-header {
-  border-bottom: 1px solid gray;
-  font-size: 20px;
-  padding : 20px;
-}
-
-header img{
-  float: right;
-  height: 100px;
-}
-
-nav {
-  border-right: 1px solid gray;
-  height: 600px;
-  width: 150px;
-  float: left;
-}
-
-nav ol{
-  list-style: none;
-  padding: 0;
-}
-
-article {
-  float: left;
-  width: 450px;
-  padding: 10px;
-}
-
-#control {
-  float: right;
-}
