@@ -9,3 +9,12 @@ body.black {
   background-color: black;
   color: white;
 }
+
+#logo{
+  width: 150px;
+  height: 150px;
+}
+
+#headerText {
+  font-size: 30px;
+}
